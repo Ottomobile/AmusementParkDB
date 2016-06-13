@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>CPSC304Project</Name>
+    <ProjectGuid>30f13749-f274-4b84-baa5-5c5554fedba0</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>CPSC304Project</AssemblyName>
+    <SpecificPageValue>pages/manager-account.php</SpecificPageValue>
+    <StartAction>SpecificPage</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="pages\manager-add-employee-back.php" />
+    <Compile Include="pages\guest-account.php" />
+    <Compile Include="pages\guest-delete.php" />
+    <Compile Include="pages\guest-edit.php" />
+    <Compile Include="pages\guest-game.php" />
+    <Compile Include="pages\guest-load-done.php" />
+    <Compile Include="pages\guest-load.php" />
+    <Compile Include="pages\guest-ride.php" />
+    <Compile Include="pages\guest-update.php" />
+    <Compile Include="pages\guest_registration_back.php" />
+    <Compile Include="pages\index.php" />
+    <Compile Include="pages\loginError.php" />
+    <Compile Include="pages\loginFront.php" />
+    <Compile Include="pages\loginBack.php" />
+    <Compile Include="pages\manager-account.php" />
+    <Compile Include="pages\manager-aggregation-nested-back.php" />
+    <Compile Include="pages\manager-aggregation-back.php" />
+    <Compile Include="pages\manager-aggregation-nested-front.php" />
+    <Compile Include="pages\manager-aggregation-front.php" />
+    <Compile Include="pages\manager-delete.php" />
+    <Compile Include="pages\manager-edit.php" />
+    <Compile Include="pages\manager-division-back.php" />
+    <Compile Include="pages\manager-join-back.php" />
+    <Compile Include="pages\manager-division-front.php" />
+    <Compile Include="pages\manager-join-front.php" />
+    <Compile Include="pages\manager-remove-employee-back.php" />
+    <Compile Include="pages\manager-remove-employee-front.php" />
+    <Compile Include="pages\manager-project-select-back.php" />
+    <Compile Include="pages\manager-remove-ride-back.php" />
+    <Compile Include="pages\manager-project-select-front.php" />
+    <Compile Include="pages\manager-remove-ride-front.php" />
+    <Compile Include="pages\manager-update.php" />
+    <Compile Include="pages\reset.php" />
+    <Compile Include="pages\manager-add-ride-back.php" />
+    <Compile Include="pages\logout.php" />
+    <Compile Include="scripts\auth.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="images\AmusementPark-1.jpg" />
+    <Content Include="images\AmusementPark-2.jpg" />
+    <Content Include="images\AmusementPark-3.jpg" />
+    <Content Include="images\AmusementPark-4.jpg" />
+    <Content Include="packages.config" />
+    <Content Include="pages\manager-add-employee-front.php" />
+    <Content Include="pages\manager-add-ride-front.php" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="scripts\jquery-2.2.3.js" />
+    <Content Include="scripts\jquery-2.2.3.min.js" />
+    <Content Include="scripts\jquery-2.2.3.min.map" />
+    <Content Include="styles\bootstrap.min.css" />
+    <Content Include="pages\guest_registration_front.php" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-2.1.4.min.js" />
+    <Content Include="styles\custom.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="fonts\" />
+    <Folder Include="images\" />
+    <Folder Include="pages\" />
+    <Folder Include="scripts\" />
+    <Folder Include="styles\" />
+  </ItemGroup>
+</Project>
