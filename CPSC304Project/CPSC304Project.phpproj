@@ -82,6 +82,7 @@
     <Content Include="scripts\jquery-2.2.3.js" />
     <Content Include="scripts\jquery-2.2.3.min.js" />
     <Content Include="scripts\jquery-2.2.3.min.map" />
+    <Content Include="sql\amusement_park.sql" />
     <Content Include="styles\bootstrap.min.css" />
     <Content Include="pages\guest_registration_front.php" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -92,6 +93,7 @@
     <Folder Include="Content\" />
     <Folder Include="fonts\" />
     <Folder Include="images\" />
+    <Folder Include="sql\" />
     <Folder Include="pages\" />
     <Folder Include="scripts\" />
     <Folder Include="styles\" />
