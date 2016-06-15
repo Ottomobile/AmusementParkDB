@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2016 at 07:45 PM
+-- Generation Time: Jun 15, 2016 at 08:27 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -46,13 +46,13 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`EmployeeID`, `Name`, `Gender`, `BirthDate`, `PhoneNumber`, `Address`, `LoginPwd`, `Sin`, `Wage`, `DateStart`, `WorksAt`, `ReportsTo`) VALUES
-(1, 'Sally', 'F', '1995-01-01', '604-213-2121', '123 Happy Dr', '1230', 123, 10, '2011-05-01', 3, 2),
-(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', '4562', 321, 10, '2014-05-01', 4, 1),
-(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd', '7895', 231, 10, '2012-05-01', 2, 3),
-(4, 'Irene', 'F', '1973-03-21', '778-210-4500', '45 Actual St', '1902', 213, 10, '2006-05-01', 1, 2),
-(5, 'DropTable', 'M', '2000-01-01', '604-123-4567', '35 Table Dr', '2222', 312, 10, '2016-05-01', 6, 1),
-(8, 'aaa', 'F', '2016-06-25', '123', '123', '123', 123, 123, '2016-06-03', 4, 1),
-(9, 'Happy', 'F', '2016-06-11', '124241', '124214', '234', 234, 234, '2016-06-25', 5, 2);
+(1, 'Sally', 'F', '1995-01-01', '604-213-2121', '123 Happy Drive', '1230', 123, 50, '2011-05-01', 3, 2),
+(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', '4562', 321, 30, '2014-05-01', 4, 1),
+(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Road', '7895', 231, 30, '2012-05-01', 2, 3),
+(4, 'Irene', 'F', '1973-03-21', '778-210-4500', '45 Actual Street', '1902', 213, 10, '2006-05-01', 1, 2),
+(5, 'DropTable', 'M', '2000-01-01', '604-123-4567', '35 Table Drive', '2222', 312, 10, '2016-05-01', 6, 1),
+(8, 'Cynthia', 'F', '2016-06-25', '604-123-7890', '890 Pizza Street', '8235', 123, 10, '2016-06-03', 4, 1),
+(9, 'Young', 'F', '2016-06-11', '778-300-4000', '123 Rainbow Road', '2344', 234, 10, '2016-06-25', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -102,12 +102,12 @@ CREATE TABLE `guest` (
 --
 
 INSERT INTO `guest` (`GuestID`, `name`, `gender`, `birthDate`, `phoneNumber`, `address`, `emailAddress`, `loginPwd`, `accountBalance`) VALUES
-(1, 'Bob', 'M', '2005-01-13', '111-222-3333', '123 Main Street NW', 'Bob@hotmail.com', '123', 1160),
-(2, 'Jen', 'F', '2000-12-12', '604-123-1234', '123 Cambie Street', 'Jen@hotmail.com', 'JenPassword', 3),
-(3, 'Joe', 'M', '0000-00-00', '123-321-4321', '123 Happy Avenue', '', 'JoePassword', 12312321),
-(4, 'Yup', 'F', '2016-06-16', '123-123-6543', '123 Granville Island', 'Yup@yahoo.ca', '12345', 123456),
-(5, 'Apple', 'F', '2016-06-09', '000-999-9999', '123 Rainbow Road', 'Apple@mango.com', '111ee', 10101),
-(6, 'Gil', 'F', '2016-06-28', '123-909-2323', '123 Happy Ave', 'Gil.More@ubc.ca', '456', 1000);
+(1, 'Bob', 'M', '2005-01-13', '111-222-3333', '123 Main Street NW', 'Bob@hotmail.com', '123', 1240),
+(2, 'Jen', 'F', '2000-12-12', '604-123-1234', '123 Cambie Street', 'Jen@hotmail.com', 'Jen', 3),
+(3, 'Joe', 'M', '0000-00-00', '123-321-4321', '123 Happy Avenue', '', 'Joe', 12312321),
+(4, 'Yup', 'F', '2016-06-16', '123-123-6543', '123 Granville Island', 'Yup@yahoo.ca', '109', 123456),
+(5, 'Apple', 'F', '2016-06-09', '000-999-9999', '123 Rainbow Road', 'Apple@mango.com', 'A88', 10101),
+(6, 'Gil', 'F', '2016-06-28', '123-909-2323', '123 Happy Ave', 'Gil.More@ubc.ca', '456', 1010);
 
 -- --------------------------------------------------------
 
@@ -134,9 +134,9 @@ CREATE TABLE `manager` (
 --
 
 INSERT INTO `manager` (`ManagerID`, `Name`, `Gender`, `BirthDate`, `PhoneNumber`, `Address`, `Loginpwd`, `Sin`, `Wage`, `DateStart`, `NumberOfReports`) VALUES
-(1, 'Sally', 'M', '1998-01-16', '604-213-3333', '123 Happy Drive', 'qwe', 123456, 102, '2011-12-01', 3),
-(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', 'happyTom', 321, 10, '2014-05-01', 2),
-(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd.', 'jeffloveamy', 231, 10, '2012-05-01', 4);
+(1, 'Sally', 'F', '1998-01-16', '604-213-3333', '123 Happy Drive', '1230', 123, 50, '2011-12-01', 3),
+(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', '4895', 321, 30, '2014-05-01', 2),
+(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Road', '4562', 231, 30, '2012-05-01', 4);
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,7 @@ CREATE TABLE `plays` (
 INSERT INTO `plays` (`Playsdatetime`, `Result`, `GuestID`, `GameID`) VALUES
 ('2016-05-25 09:15:55', 3, 1, 1),
 ('2016-05-25 13:11:20', 100, 2, 5),
-('2016-05-25 14:22:08', 6, 2, 98),
+('2016-05-25 14:22:08', 6, 3, 2),
 ('2016-05-25 17:30:39', 56, 5, 4),
 ('2016-05-25 19:10:22', 77, 4, 3);
 
@@ -189,7 +189,7 @@ INSERT INTO `ride` (`FacilityID`, `Name`, `Capacity`, `GPSLocation`, `Park`, `Mi
 (3, 'Octopussy', 20, '123.1125, 123.1125', 'A', 100, 8, 'Thril'),
 (4, 'Wet & Wild', 30, '123.1175, 123.1170', 'A', 120, 10, 'Log Flume'),
 (5, 'Tiny Golf', 15, '123.1265, 123.1253', 'B', NULL, 5, 'Child'),
-(6, 'asas', 123, '123', 'R', 44, 34, 'fdfdf');
+(6, 'Litte Dwarf Train', 70, '123.1920, 123.1005', 'B', 44, 34, 'Famliy');
 
 -- --------------------------------------------------------
 
@@ -243,8 +243,7 @@ INSERT INTO `visited` (`VisitedDatetime`, `GuestID`, `FacilityID`) VALUES
 ('2016-05-25 17:27:46', 1, 2),
 ('2016-05-25 17:27:47', 1, 3),
 ('2016-05-25 17:27:48', 1, 4),
-('2016-05-25 17:27:49', 1, 5),
-('2016-06-15 10:44:34', 1, 1);
+('2016-05-25 17:27:49', 1, 5);
 
 --
 -- Indexes for dumped tables
@@ -281,7 +280,9 @@ ALTER TABLE `manager`
 -- Indexes for table `plays`
 --
 ALTER TABLE `plays`
-  ADD PRIMARY KEY (`Playsdatetime`,`GuestID`,`GameID`);
+  ADD PRIMARY KEY (`Playsdatetime`,`GuestID`,`GameID`),
+  ADD KEY `gamec` (`GameID`),
+  ADD KEY `guestc` (`GuestID`);
 
 --
 -- Indexes for table `ride`
@@ -316,17 +317,17 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `GuestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `GuestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `ride`
 --
 ALTER TABLE `ride`
-  MODIFY `FacilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `FacilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- Constraints for dumped tables
 --
@@ -337,6 +338,13 @@ ALTER TABLE `ride`
 ALTER TABLE `employee`
   ADD CONSTRAINT `ReportsToConstraint` FOREIGN KEY (`ReportsTo`) REFERENCES `manager` (`ManagerID`) ON DELETE SET NULL,
   ADD CONSTRAINT `WorksAtConstraint` FOREIGN KEY (`WorksAt`) REFERENCES `ride` (`FacilityID`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `plays`
+--
+ALTER TABLE `plays`
+  ADD CONSTRAINT `gamec` FOREIGN KEY (`GameID`) REFERENCES `game` (`GameID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `guestc` FOREIGN KEY (`GuestID`) REFERENCES `guest` (`GuestID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `visited`
