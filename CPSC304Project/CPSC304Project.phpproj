@@ -19,6 +19,8 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="pages\manager-add-ride-back.php" />
+    <Compile Include="pages\manager-add-ride-front.php" />
     <Compile Include="pages\manager-add-employee-back.php" />
     <Compile Include="pages\guest-account.php" />
     <Compile Include="pages\guest-delete.php" />
@@ -52,7 +54,6 @@
     <Compile Include="pages\manager-remove-ride-front.php" />
     <Compile Include="pages\manager-update.php" />
     <Compile Include="pages\reset.php" />
-    <Compile Include="pages\manager-add-ride-back.php" />
     <Compile Include="pages\logout.php" />
     <Compile Include="scripts\auth.php" />
   </ItemGroup>
@@ -76,7 +77,6 @@
     <Content Include="images\AmusementPark-4.jpg" />
     <Content Include="packages.config" />
     <Content Include="pages\manager-add-employee-front.php" />
-    <Content Include="pages\manager-add-ride-front.php" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="scripts\jquery-2.2.3.js" />

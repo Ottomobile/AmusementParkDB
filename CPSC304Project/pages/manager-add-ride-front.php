@@ -47,35 +47,35 @@
             <form role="form" action="manager-add-ride-back.php" id="form-background" method="post">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name" />
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Name" />
                 </div>
                 <div class="form-group">
                     <label for="capacity">Capacity:</label>
-                    <input type="number" min="0" class="form-control" id="capacity" placeholder="Capacity" />
+                    <input name="capacity" type="number" min="0" class="form-control" id="capacity" placeholder="Capacity" />
                 </div>
                 <div class="form-group">
                     <label for="gpslocation">GPS Location:</label>
-                    <input type="text" class="form-control" id="gpslocation" placeholder="123.1234,123.1234" />
+                    <input name="gpslocation" type="text" class="form-control" id="gpslocation" placeholder="123.1234,123.1234" />
                 </div>
                 <div class="form-group">
                     <label for="park">Park:</label>
-                    <input type="text" class="form-control" id="park" placeholder="Park" />
+                    <input name="park" type="text" class="form-control" id="park" placeholder="Park" />
                 </div>
                 <div class="form-group">
                     <label for="minHeight">Minimum Height (cm)</label>
-                    <input type="number" min="0" class="form-control" id="minHeight" placeholder="Minimum Height" />
+                    <input name="minHeight" type="number" min="0" class="form-control" id="minHeight" placeholder="Minimum Height" />
                 </div>
                 <div class="form-group">
                     <label for="cost">Cost:</label>
-                    <input type="text" class="form-control" id="cost" placeholder="Cost" />
+                    <input name="cost" type="number" min="0" class="form-control" id="cost" placeholder="Cost" />
                 </div>
                 <div class="form-group">
                     <label for="rideType">Ride Type:</label>
-                    <input type="text" class="form-control" id="rideType" placeholder="Ride Type" />
+                    <input name="rideType" type="text" class="form-control" id="rideType" placeholder="Ride Type" />
                 </div>
                 <div class="form-group">
                     <label for="employee">Employee:</label>
-                    <input type="text" class="form-control" id="employee" placeholder="Employee Name" />
+                    <input name="employee" type="text" class="form-control" id="employee" placeholder="Employee Name" />
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-default" href="manager-account.php">Cancel</a>

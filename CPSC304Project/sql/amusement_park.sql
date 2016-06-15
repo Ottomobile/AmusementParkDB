@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2016 at 08:24 AM
+-- Generation Time: Jun 15, 2016 at 08:36 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -189,7 +189,8 @@ INSERT INTO `ride` (`FacilityID`, `Name`, `Capacity`, `GPSLocation`, `Park`, `Mi
 (2, 'Merry Go Down', 20, '123.1230, 123.1237', 'B', NULL, 5, 'Child'),
 (3, 'Octopussy', 20, '123.1125, 123.1125', 'A', 100, 8, 'Thril'),
 (4, 'Wet & Wild', 30, '123.1175, 123.1170', 'A', 120, 10, 'Log Flume'),
-(5, 'Tiny Golf', 15, '123.1265, 123.1253', 'B', NULL, 5, 'Child');
+(5, 'Tiny Golf', 15, '123.1265, 123.1253', 'B', NULL, 5, 'Child'),
+(6, 'asas', 123, '123', 'R', 44, 34, 'fdfdf');
 
 -- --------------------------------------------------------
 
@@ -312,6 +313,11 @@ ALTER TABLE `guest`
 --
 ALTER TABLE `manager`
   MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `ride`
+--
+ALTER TABLE `ride`
+  MODIFY `FacilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
