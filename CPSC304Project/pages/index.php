@@ -12,7 +12,7 @@
     <link href="../styles/bootstrap.min.css" rel="stylesheet" />
     <title>Home</title>
 </head>
-<body style="background-image:url('../images/AmusementPark-1.jpg'); background-size:100%; background-repeat:no-repeat">
+<body style="background-image:url('../images/AmusementPark-1.jpg'); background-size:100%; background-repeat:repeat-y">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
