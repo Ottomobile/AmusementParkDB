@@ -99,11 +99,9 @@
                     elseif($status == "good"){
                         echo "<p id='p-label'>Successfully updated the account of " . $name . "!</p>";
                     }
-                    echo "<br>
-                            <div class='btn-group-vertical'>
-                                <a class='btn btn-default' href='guest-account.php'>Guest Account Home</a>
-                            </div>";
                 ?>
+                <br>
+                <a class="btn btn-default" href="guest-account.php">Guest Account Home</a>
             </form>
         </div>
     </div>

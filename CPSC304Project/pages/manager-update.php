@@ -1,12 +1,58 @@
 <?php
-session_start();
+    session_start();
+
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
+
+    $status = "good";
+
+    // Store the form values in variables
+    $name = $_SESSION['loggedInUser'][1];
+    $gender = mysql_real_escape_string($_POST['gender']);
+    $birthdate = mysql_real_escape_string($_POST['birthDate']);
+    $phoneNumber = mysql_real_escape_string($_POST['phoneNumber']);
+    $address = mysql_real_escape_string($_POST['address']);
+    $sin = mysql_real_escape_string($_POST['sin']);
+    $wage = mysql_real_escape_string($_POST['wage']);
+    $datestart = mysql_real_escape_string($_POST['datestart']);
+    $password = mysql_real_escape_string($_POST['password']);
+    $passwordRetype = mysql_real_escape_string($_POST['password-retype']);
+
+    // Check if the passwords match
+    if($password != $passwordRetype){
+        $status = "passwordMismatch";
+    }
+    elseif($name && $gender && $birthdate && $phoneNumber && $address && $sin && $wage && $datestart && $password){
+
+        // Prepare update statement
+        $query = sprintf("UPDATE manager
+                          SET Gender='%s', BirthDate='%s', PhoneNumber='%s', Address='%s', Loginpwd='%s', Sin='%s', Wage='%s', DateStart='%s'
+                          WHERE Name='%s';",
+                          $gender, $birthdate, $phoneNumber, $address, $password, $sin, $wage, $datestart, $name);
+
+        // Perform query
+        $result = mysql_query($query);
+
+        // Check result
+        // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+        if (!$result) {
+            $message  = 'Invalid query: ' . mysql_error() . "\n";
+            $message .= 'Whole query: ' . $query;
+            die($message);
+        }
+        // Successfully updated manager account
+    }
+    else{
+        $status = "missingFields";
+        print "<p id='p-label'>Please fill in the missing fields</p>";
+    }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="../styles/custom.css" rel="stylesheet" />
     <link href="../styles/bootstrap.min.css" rel="stylesheet" />
-    <title>Update Account Status</title>
+    <title>Manager Account Update Status</title>
 </head>
 <body style="background-image:url('../images/AmusementPark-2.jpg'); background-size:100%; background-repeat:repeat-y">
     <nav class="navbar navbar-inverse">
@@ -41,16 +87,22 @@ session_start();
 
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h1 id="header-1">Update Account Status</h1>
+            <h1 id="header-1">Manager Account Update Status</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form role="form" action="manager-update.php" id="form-background" method="post">
                 <?php
-                echo "<p id='p-label'>Update Account Status</p>";
+                if($status == "passwordMismatch"){
+                    echo "<p id='p-label'>Passwords do not match.  Account not updated.</p>";
+                }
+                elseif($status == "good"){
+                    echo "<p id='p-label'>Successfully updated the account of " . $name . "!</p>";
+                }
                 ?>
-                <a class="btn btn-default" href="manager-account.php">Account Home</a>
+                <br />
+                <a class="btn btn-default" href="manager-account.php">Manager Account Home</a>
             </form>
         </div>
     </div>
