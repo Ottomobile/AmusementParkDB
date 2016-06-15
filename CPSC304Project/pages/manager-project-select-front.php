@@ -45,7 +45,12 @@ session_start();
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form role="form" action="manager-project-select-back.php" id="form-background" method="post">
-                <p id="p-label">Project Select Query</p>
+                <p id="p-label">Find the names of guests born after the given year.</p>
+                <div class="form-group">
+                    <label for="year">Please input the year:</label>
+                    <input name="year" type="number" min="0" class="form-control" id="year" placeholder="Year" required />
+                </div>
+                <br />
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-default" href="manager-account.php">Cancel</a>
             </form>
