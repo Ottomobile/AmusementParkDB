@@ -85,31 +85,30 @@
             <form role="form" action="employee-update.php" id="form-background" method="post">
                 <div class="radio" id="gender-radio">
                     <p id="p-label">Gender:</p>
-                    <label><input type="radio" name="gender" value="F" required <?php if ($row['gender'] == 'F'){ echo 'checked'; } ?> />Female</label><br />
-                    <label><input type="radio" name="gender" value="M"  <?php if ($row['gender'] == 'M'){ echo 'checked'; } ?>/>Male</label>
+                    <label><input type="radio" name="gender" value="F" required <?php if ($row['Gender'] == 'F'){ echo 'checked'; } ?> />Female</label><br />
+                    <label><input type="radio" name="gender" value="M"  <?php if ($row['Gender'] == 'M'){ echo 'checked'; } ?>/>Male</label>
                 </div>
                 <div class="form-group">
                     <label for="birthDate">Birth Date:</label>
-                    <input name="birthDate" type="date" class="form-control" id="birthDate" placeholder="mm/dd/yyyy" value="<?php echo $row['birthDate']; ?>" required />
+                    <input name="birthDate" type="date" class="form-control" id="birthDate" placeholder="mm/dd/yyyy" value="<?php echo $row['BirthDate']; ?>" required />
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input name="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="111-222-3333" value="<?php echo $row['phoneNumber']; ?>" required />
+                    <input name="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="111-222-3333" value="<?php echo $row['PhoneNumber']; ?>" required />
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input name="address" type="text" class="form-control" id="address" placeholder="123 Main Street" value="<?php echo $row['address']; ?>" required />
+                    <input name="address" type="text" class="form-control" id="address" placeholder="123 Main Street" value="<?php echo $row['Address']; ?>" required />
                 </div>
                 <div class="form-group">
                     <label for="pwd">New Password:</label>
-                    <input name="password" type="password" class="form-control" id="pwd" placeholder="New Password" value="<?php echo $row['loginPwd']; ?>"/>
+                    <input name="password" type="password" class="form-control" id="pwd" placeholder="New Password" value="<?php echo $row['LoginPwd']; ?>"/>
                 </div>
                 <div class="form-group">
                     <label for="pwd-retype">Retype Password:</label>
                     <input name="password-retype" type="password" class="form-control" id="pwd-retype" placeholder="Retype New Password"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
-                <a href="employee-account.php" class="btn btn-default">Cancel</a>
             </form>
         </div>
     </div>

@@ -19,6 +19,8 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="pages\employee-account.php" />
+    <Compile Include="pages\employee-update.php" />
     <Compile Include="pages\guest-game-back.php" />
     <Compile Include="pages\guest-ride-back.php" />
     <Compile Include="pages\manager-add-ride-back.php" />
