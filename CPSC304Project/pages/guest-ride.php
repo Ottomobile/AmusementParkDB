@@ -46,8 +46,56 @@
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form role="form" id="form-background">
-                <p>PRINT OUT RIDE DETAILS</p>
+            <form role="form" id="form-background" action="guest-ride-back.php" method="post">
+                <div class="form-group">
+                    <p id="p-label">Current balance: </p>
+                    <?php
+                        $name = $_SESSION['loggedInUser'][1];
+
+                        // Get account balance
+                        $query = sprintf("SELECT accountBalance FROM guest WHERE name = '%s';", $name);
+
+                        // Perform query
+                        $result = mysql_query($query);
+
+                        // Check result
+                        // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                        if (!$result) {
+                            $message  = 'Invalid query: ' . mysql_error() . "\n";
+                            $message .= 'Whole query: ' . $query;
+                            die($message);
+                        }
+                        $row = mysql_fetch_assoc($result);
+                        echo "<p id=p-label>$".$row['accountBalance']."</p>";
+                    ?>
+                    <br />
+                    <p id="p-label">Rides to visit:</p>
+                    <div class="dropdown">
+                        <select class="form-control" name="facilityID">
+                            <?php
+                            // Prepare select statement
+                            $query = "SELECT FacilityID, Name, Cost FROM ride;";
+
+                            // Perform query
+                            $result = mysql_query($query);
+
+                            // Check result
+                            // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                            if (!$result) {
+                                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                                $message .= 'Whole query: ' . $query;
+                                die($message);
+                            }
+                            while($row = mysql_fetch_assoc($result)){
+                                $htmlToPrint = sprintf("<option value='%s'>%s, $%s</option>", $row['FacilityID'], $row['Name'], $row['Cost']);
+                                echo $htmlToPrint;
+                            }
+                            ?>
+                        </select>
+                        <br />
+                    </div>
+                </div>
+                <button class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
