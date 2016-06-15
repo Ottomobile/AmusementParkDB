@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2016 at 01:33 AM
+-- Generation Time: Jun 15, 2016 at 08:24 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -33,22 +33,28 @@ CREATE TABLE `employee` (
   `BirthDate` date DEFAULT NULL,
   `PhoneNumber` char(12) DEFAULT NULL,
   `Address` varchar(256) DEFAULT NULL,
-  `LoginPwd` int(11) DEFAULT NULL,
+  `LoginPwd` varchar(256) DEFAULT NULL,
   `Sin` int(11) DEFAULT NULL,
   `Wage` int(11) DEFAULT NULL,
-  `DateStart` date DEFAULT NULL
+  `DateStart` date DEFAULT NULL,
+  `WorksAt` varchar(256) DEFAULT NULL,
+  `ReportsTo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`EmployeeID`, `Name`, `Gender`, `BirthDate`, `PhoneNumber`, `Address`, `LoginPwd`, `Sin`, `Wage`, `DateStart`) VALUES
-(1, 'Sally', 'F', '1995-01-01', '604-213-2121', '123 Happy Dr', 1230, 123, 10, '2011-05-01'),
-(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', 456, 321, 10, '2014-05-01'),
-(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd', 789, 231, 10, '2012-05-01'),
-(4, 'Irene', 'F', '1973-03-21', '778-210-4500', '45 Actual St', 111, 213, 10, '2006-05-01'),
-(5, 'DropTable', 'M', '2000-01-01', '604-123-4567', '35 Table Dr', 222, 312, 10, '2016-05-01');
+INSERT INTO `employee` (`EmployeeID`, `Name`, `Gender`, `BirthDate`, `PhoneNumber`, `Address`, `LoginPwd`, `Sin`, `Wage`, `DateStart`, `WorksAt`, `ReportsTo`) VALUES
+(1, 'Sally', 'F', '1995-01-01', '604-213-2121', '123 Happy Dr', '1230', 123, 10, '2011-05-01', '3', 2),
+(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', '4562', 321, 10, '2014-05-01', '9', 1),
+(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd', '7895', 231, 10, '2012-05-01', '2', 3),
+(4, 'Irene', 'F', '1973-03-21', '778-210-4500', '45 Actual St', '1902', 213, 10, '2006-05-01', '1', 2),
+(5, 'DropTable', 'M', '2000-01-01', '604-123-4567', '35 Table Dr', '2222', 312, 10, '2016-05-01', '6', 1),
+(6, 'abc', 'o', '2016-06-10', '12345', '12345', '123', 123, 123, '2016-06-11', 'Super Coaster', 0),
+(7, 'dfdf', 'o', '2016-06-18', '123', '123', '123', 123, 123, '2016-06-18', 'Octopussy', 0),
+(8, 'aaa', 'o', '2016-06-25', '123', '123', '123', 123, 123, '2016-06-03', '4', 1),
+(9, 'Happy', 'o', '2016-06-11', '124241', '124214', '234', 234, 234, '2016-06-25', '5', 2);
 
 -- --------------------------------------------------------
 
@@ -98,11 +104,11 @@ CREATE TABLE `guest` (
 --
 
 INSERT INTO `guest` (`GuestID`, `name`, `gender`, `birthDate`, `phoneNumber`, `address`, `emailAddress`, `loginPwd`, `accountBalance`) VALUES
-(1, 'Bob', 'M', '2005-01-27', '111-222-3333', '123 Main Street NW', 'Bob@hotmail.com', '123', 1240),
+(1, 'Bob', 'M', '2005-01-13', '111-222-3333', '123 Main Street NW', 'Bob@hotmail.com', '123', 1240),
 (2, 'Jen', 'F', '2000-12-12', '604-123-1234', '123 Cambie Street', 'Jen@hotmail.com', 'JenPassword', 123),
 (3, 'Joe', 'M', '0000-00-00', '123-321-4321', '123 Happy Avenue', '', 'JoePassword', 12312321),
 (7, 'Yup', 'F', '2016-06-16', '123-123-6543', '123 Granville Island', 'Yup@yahoo.ca', '12345', 123456),
-(8, 'Apple', 'F', '2016-06-09', '000-999-9999', '123 Rainbow Road', 'Apple@mango.com', '111', 10101);
+(8, 'Apple', 'F', '2016-06-09', '000-999-9999', '123 Rainbow Road', 'Apple@mango.com', '111ee', 10101);
 
 -- --------------------------------------------------------
 
@@ -129,9 +135,9 @@ CREATE TABLE `manager` (
 --
 
 INSERT INTO `manager` (`ManagerID`, `Name`, `Gender`, `BirthDate`, `PhoneNumber`, `Address`, `Loginpwd`, `Sin`, `Wage`, `DateStart`, `NumberOfReports`) VALUES
-(1, 'Sally', 'F', '1998-01-01', '604-213-2121', '123 Happy Dr', '1123', 123, 10, '2011-05-01', 3),
-(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', 'abc', 321, 10, '2014-05-01', 2),
-(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd.', 'def', 231, 10, '2012-05-01', 1);
+(1, 'Sally', 'M', '1998-01-16', '604-213-3333', '123 Happy Drive', 'qwe', 123456, 102, '2011-12-01', 3),
+(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', 'happyTom', 321, 10, '2014-05-01', 2),
+(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd.', 'jeffloveamy', 231, 10, '2012-05-01', 4);
 
 -- --------------------------------------------------------
 
@@ -182,7 +188,7 @@ INSERT INTO `ride` (`FacilityID`, `Name`, `Capacity`, `GPSLocation`, `Park`, `Mi
 (1, 'Super Coaster', 50, '123.1134, 123.1134', 'A', 120, 10, 'Coaster'),
 (2, 'Merry Go Down', 20, '123.1230, 123.1237', 'B', NULL, 5, 'Child'),
 (3, 'Octopussy', 20, '123.1125, 123.1125', 'A', 100, 8, 'Thril'),
-(4, 'Tiny Golf', 30, '123.1175, 123.1170', 'A', 120, 10, 'Log Flume'),
+(4, 'Wet & Wild', 30, '123.1175, 123.1170', 'A', 120, 10, 'Log Flume'),
 (5, 'Tiny Golf', 15, '123.1265, 123.1253', 'B', NULL, 5, 'Child');
 
 -- --------------------------------------------------------
@@ -254,7 +260,8 @@ ALTER TABLE `game`
 -- Indexes for table `guest`
 --
 ALTER TABLE `guest`
-  ADD PRIMARY KEY (`GuestID`);
+  ADD PRIMARY KEY (`GuestID`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `manager`
@@ -284,7 +291,7 @@ ALTER TABLE `store`
 -- Indexes for table `visited`
 --
 ALTER TABLE `visited`
-  ADD PRIMARY KEY (`VisitedDatetime`);
+  ADD PRIMARY KEY (`VisitedDatetime`,`GuestID`,`FacilityID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -294,7 +301,7 @@ ALTER TABLE `visited`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `guest`
 --

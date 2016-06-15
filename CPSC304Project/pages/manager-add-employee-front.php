@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -47,7 +49,7 @@
             <form role="form" action="manager-add-employee-back.php" id="form-background" method="post">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name" />
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Name" />
                 </div>
                 <div class="radio" id="gender-radio">
                     <p id="p-label">Gender:</p>
@@ -56,58 +58,86 @@
                 </div>
                 <div class="form-group">
                     <label for="birthDate">Birth Date:</label>
-                    <input type="date" class="form-control" id="birthDate" placeholder="mm/dd/yyyy" />
+                    <input name="birthDate" type="date" class="form-control" id="birthDate" placeholder="mm/dd/yyyy" />
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" class="form-control" id="phoneNumber" placeholder="111-222-3333" />
+                    <input name="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="111-222-3333" />
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="text" class="form-control" id="address" placeholder="123 Main Street" />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" class="form-control" id="email" placeholder="John.Smith@ubc.ca" />
+                    <input name="address" type="text" class="form-control" id="address" placeholder="123 Main Street" />
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Password" />
+                    <input name="pwd" type="password" class="form-control" id="pwd" placeholder="Password" />
                 </div>
                 <div class="form-group">
                     <label for="pwd-retype">Retype Password:</label>
-                    <input type="password" class="form-control" id="pwd-retype" placeholder="Retype password" />
+                    <input name="pwd-retype" type="password" class="form-control" id="pwd-retype" placeholder="Retype password" />
                 </div>
                 <div class="form-group">
                     <label for="sin">SIN:</label>
-                    <input type="number" min="0" class="form-control" id="sin" placeholder="SIN"/>
+                    <input name="sin" type="number" min="0" class="form-control" id="sin" placeholder="SIN"/>
                 </div>
                 <div class="form-group">
                     <label for="wage">Wage ($ Per Hour):</label>
-                    <input type="number" min="0" class="form-control" id="wage" placeholder="Wage"/>
+                    <input name="wage" type="number" min="0" class="form-control" id="wage" placeholder="Wage"/>
                 </div>
                 <div class="form-group">
                     <label for="dateStart">Start Date:</label>
-                    <input type="date" class="form-control" id="dateStart" placeholder="mm/dd/yyyy" />
+                    <input name="dateStart" type="date" class="form-control" id="dateStart" placeholder="mm/dd/yyyy" />
                 </div>
                 <div class="form-group">
-                    <label for="manager">Manager:</label>
-                    <input type="text" class="form-control" id="manager" placeholder="Manager Name" />
+                    <p id="p-label">Manager:</p>
+                    <div class="dropdown">
+                        <select class="form-control" name="reportto">
+                            <?php
+                            // Prepare update statement
+                            $query = "SELECT ManagerID, Name FROM manager;";
+
+                            // Perform query
+                            $result = mysql_query($query);
+
+                            // Check result
+                            // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                            if (!$result) {
+                                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                                $message .= 'Whole query: ' . $query;
+                                die($message);
+                            }
+                            while($row = mysql_fetch_assoc($result)){
+                                $htmlToPrint = sprintf("<option value='%s'>%s</option>", $row['ManagerID'], $row['Name']);
+                                echo $htmlToPrint;
+                            }
+                            ?>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <p id="p-label">Work At:</p>
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                            Facility
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ride 1</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ride 2</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ride 3</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Store 1</a></li>
-                        </ul>
+                        <select class="form-control" name="workat">
+                            <?php
+                            // Prepare update statement
+                            $query = "SELECT FacilityID, Name FROM ride;";
+
+                            // Perform query
+                            $result = mysql_query($query);
+
+                            // Check result
+                            // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                            if (!$result) {
+                                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                                $message .= 'Whole query: ' . $query;
+                                die($message);
+                            }
+                            while($row = mysql_fetch_assoc($result)){
+                                $htmlToPrint = sprintf("<option value='%s'>%s</option>", $row['FacilityID'], $row['Name']);
+                                echo $htmlToPrint;
+                            }
+                            ?>
+                        </select>
                         <br />
                     </div>
                 </div>
