@@ -38,6 +38,11 @@
                 header("Location: guest-account.php");
                 exit;
             }
+            elseif($usertype == "employee" && $row['Name'] == $name && $row['Loginpwd'] == $password){
+                $_SESSION['loggedInUser'] = array($usertype, $name, $password);
+                header("Location: employee-account.php");
+                exit;
+            }
             elseif($usertype == "manager" && $row['Name'] == $name && $row['Loginpwd'] == $password){
                 $_SESSION['loggedInUser'] = array($usertype, $name, $password);
                 header("Location: manager-account.php");

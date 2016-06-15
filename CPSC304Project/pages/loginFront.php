@@ -54,10 +54,10 @@
                         <input type="radio" name="usertype" value="guest" required />Guest
                     </label>
                     <br />
-                    <!--<label>
+                    <label>
                         <input type="radio" name="usertype" value="employee" />Employee
                     </label>
-                    <br />-->
+                    <br />
                     <label>
                         <input type="radio" name="usertype" value="manager" />Manager
                     </label>
