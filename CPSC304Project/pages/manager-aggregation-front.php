@@ -48,7 +48,7 @@
         <div class="col-md-6 col-md-offset-3">
             <form role="form" action="manager-aggregation-back.php" id="form-background" method="post">
                 <p id="p-label">Aggregation Query</p>
-                <div class="radio" id="gender-radio">
+                <div class="radio" id="aggregation-radio">
                     <label>
                         <input type="radio" name="aggegrationChoice" value="0" required />
                         Find the names of the guests who have the highest account balance.

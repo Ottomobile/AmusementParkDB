@@ -1,5 +1,7 @@
 <?php
-session_start();
+    session_start();
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -46,6 +48,17 @@ session_start();
         <div class="col-md-6 col-md-offset-3">
             <form role="form" action="manager-aggregation-nested-back.php" id="form-background" method="post">
                 <p id="p-label">Nested Aggregation Query</p>
+                <div class="radio" id="aggregation-radio">
+                    <label>
+                        <input type="radio" name="aggegrationChoice" value="0" required />
+                        Find the average wage of each gender.
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" name="aggegrationChoice" value="1" />
+                        Find the number of visits for each ride.
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-default" href="manager-account.php">Cancel</a>
             </form>
