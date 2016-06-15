@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2016 at 09:22 AM
+-- Generation Time: Jun 15, 2016 at 09:38 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -105,8 +105,9 @@ INSERT INTO `guest` (`GuestID`, `name`, `gender`, `birthDate`, `phoneNumber`, `a
 (1, 'Bob', 'M', '2005-01-13', '111-222-3333', '123 Main Street NW', 'Bob@hotmail.com', '123', 1240),
 (2, 'Jen', 'F', '2000-12-12', '604-123-1234', '123 Cambie Street', 'Jen@hotmail.com', 'JenPassword', 123),
 (3, 'Joe', 'M', '0000-00-00', '123-321-4321', '123 Happy Avenue', '', 'JoePassword', 12312321),
-(7, 'Yup', 'F', '2016-06-16', '123-123-6543', '123 Granville Island', 'Yup@yahoo.ca', '12345', 123456),
-(8, 'Apple', 'F', '2016-06-09', '000-999-9999', '123 Rainbow Road', 'Apple@mango.com', '111ee', 10101);
+(4, 'Yup', 'F', '2016-06-16', '123-123-6543', '123 Granville Island', 'Yup@yahoo.ca', '12345', 123456),
+(5, 'Apple', 'F', '2016-06-09', '000-999-9999', '123 Rainbow Road', 'Apple@mango.com', '111ee', 10101),
+(6, 'Gil', 'F', '2016-06-28', '123-909-2323', '123 Happy Ave', 'Gil.More@ubc.ca', '456', 1010);
 
 -- --------------------------------------------------------
 
@@ -292,7 +293,9 @@ ALTER TABLE `store`
 -- Indexes for table `visited`
 --
 ALTER TABLE `visited`
-  ADD PRIMARY KEY (`VisitedDatetime`,`GuestID`,`FacilityID`);
+  ADD PRIMARY KEY (`VisitedDatetime`,`GuestID`,`FacilityID`),
+  ADD KEY `GuestConstraint` (`GuestID`),
+  ADD KEY `FacilityConstraint` (`FacilityID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -328,6 +331,13 @@ ALTER TABLE `ride`
 ALTER TABLE `employee`
   ADD CONSTRAINT `ReportsToConstraint` FOREIGN KEY (`ReportsTo`) REFERENCES `manager` (`ManagerID`) ON DELETE SET NULL,
   ADD CONSTRAINT `WorksAtConstraint` FOREIGN KEY (`WorksAt`) REFERENCES `ride` (`FacilityID`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `visited`
+--
+ALTER TABLE `visited`
+  ADD CONSTRAINT `FacilityConstraint` FOREIGN KEY (`FacilityID`) REFERENCES `ride` (`FacilityID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `GuestConstraint` FOREIGN KEY (`GuestID`) REFERENCES `guest` (`GuestID`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

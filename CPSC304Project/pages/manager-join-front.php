@@ -1,5 +1,7 @@
 <?php
-session_start();
+    session_start();
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -45,7 +47,31 @@ session_start();
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form role="form" action="manager-join-back.php" id="form-background" method="post">
-                <p id="p-label">Join Query</p>
+                <p id="p-label">Find the names of guests who visited the facility.</p>
+                <div class="dropdown">
+                    <select class="form-control" name="rideDropDown">
+                        <?php
+                        // Prepare update statement
+                        $query = "SELECT FacilityID, Name FROM ride;";
+
+                        // Perform query
+                        $result = mysql_query($query);
+
+                        // Check result
+                        // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                        if (!$result) {
+                            $message  = 'Invalid query: ' . mysql_error() . "\n";
+                            $message .= 'Whole query: ' . $query;
+                            die($message);
+                        }
+                        while($row = mysql_fetch_assoc($result)){
+                            $htmlToPrint = sprintf("<option value='%s'>%s</option>", $row['FacilityID'], $row['Name']);
+                            echo $htmlToPrint;
+                        }
+                        ?>
+                    </select>
+                </div>
+                <br />
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-default" href="manager-account.php">Cancel</a>
             </form>
