@@ -1,5 +1,7 @@
 <?php
-session_start();
+    session_start();
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -46,6 +48,17 @@ session_start();
         <div class="col-md-6 col-md-offset-3">
             <form role="form" action="manager-aggregation-back.php" id="form-background" method="post">
                 <p id="p-label">Aggregation Query</p>
+                <div class="radio" id="gender-radio">
+                    <label>
+                        <input type="radio" name="aggegrationChoice" value="0" required />
+                        Find the names of the guests who have the highest account balance.
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" name="aggegrationChoice" value="1" />
+                        Find the sum of all guest account balances.
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-default" href="manager-account.php">Cancel</a>
             </form>
