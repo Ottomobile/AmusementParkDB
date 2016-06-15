@@ -1,5 +1,7 @@
 <?php
-session_start();
+    session_start();
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -46,6 +48,33 @@ session_start();
         <div class="col-md-6 col-md-offset-3">
             <form role="form" id="form-background">
                 <p id="p-label">Division Query Result</p>
+                <table class="table table-striped" style="background-color:white">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Formulate query
+                        $query = sprintf("SELECT g.name FROM guest g WHERE 0 = (SELECT COUNT(r.facilityID) FROM ride r WHERE r.FacilityID NOT IN (SELECT v.facilityID FROM visited v WHERE v.guestID = g.guestID))");
+
+                        // Perform Query
+                        $result = mysql_query($query);
+
+                        // Check result
+                        // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                        if (!$result) {
+                            $message  = 'Invalid query: ' . mysql_error() . "\n";
+                            $message .= 'Whole query: ' . $query;
+                            die($message);
+                        }
+
+                        while($row = mysql_fetch_assoc($result))
+                            echo "<tr><td>".$row['name']."</td></tr>";
+                        ?>
+                    </tbody>
+                </table>
                 <a class="btn btn-default" href="manager-account.php">Account Home</a>
             </form>
         </div>

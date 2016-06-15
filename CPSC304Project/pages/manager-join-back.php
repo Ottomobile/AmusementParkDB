@@ -56,7 +56,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        // Retrieve year from form
+                        // Retrieve facility id from form
                         $facilityID = mysql_real_escape_string($_POST['rideDropDown']);
 
                         // Formulate query

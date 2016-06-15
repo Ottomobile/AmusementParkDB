@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2016 at 09:38 AM
+-- Generation Time: Jun 15, 2016 at 10:00 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -234,11 +234,16 @@ CREATE TABLE `visited` (
 --
 
 INSERT INTO `visited` (`VisitedDatetime`, `GuestID`, `FacilityID`) VALUES
+('2016-05-24 17:27:49', 1, 6),
 ('2016-05-25 12:00:00', 1, 1),
 ('2016-05-25 13:30:15', 2, 2),
 ('2016-05-25 17:27:30', 4, 3),
 ('2016-05-25 17:27:35', 5, 3),
-('2016-05-25 17:27:45', 6, 3);
+('2016-05-25 17:27:45', 6, 3),
+('2016-05-25 17:27:46', 1, 2),
+('2016-05-25 17:27:47', 1, 3),
+('2016-05-25 17:27:48', 1, 4),
+('2016-05-25 17:27:49', 1, 5);
 
 --
 -- Indexes for dumped tables
