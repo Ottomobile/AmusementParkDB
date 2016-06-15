@@ -19,8 +19,6 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="#">Rides</a></li>
-                    <li><a href="#">Games</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="guest_registration_front.php"><span class="glyphicon glyphicon-user"></span>&nbsp;Guest Registration</a></li>
