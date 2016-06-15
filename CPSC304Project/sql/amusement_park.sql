@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2016 at 08:36 AM
+-- Generation Time: Jun 15, 2016 at 09:22 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -37,7 +37,7 @@ CREATE TABLE `employee` (
   `Sin` int(11) DEFAULT NULL,
   `Wage` int(11) DEFAULT NULL,
   `DateStart` date DEFAULT NULL,
-  `WorksAt` varchar(256) DEFAULT NULL,
+  `WorksAt` int(11) DEFAULT NULL,
   `ReportsTo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -46,15 +46,13 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`EmployeeID`, `Name`, `Gender`, `BirthDate`, `PhoneNumber`, `Address`, `LoginPwd`, `Sin`, `Wage`, `DateStart`, `WorksAt`, `ReportsTo`) VALUES
-(1, 'Sally', 'F', '1995-01-01', '604-213-2121', '123 Happy Dr', '1230', 123, 10, '2011-05-01', '3', 2),
-(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', '4562', 321, 10, '2014-05-01', '9', 1),
-(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd', '7895', 231, 10, '2012-05-01', '2', 3),
-(4, 'Irene', 'F', '1973-03-21', '778-210-4500', '45 Actual St', '1902', 213, 10, '2006-05-01', '1', 2),
-(5, 'DropTable', 'M', '2000-01-01', '604-123-4567', '35 Table Dr', '2222', 312, 10, '2016-05-01', '6', 1),
-(6, 'abc', 'o', '2016-06-10', '12345', '12345', '123', 123, 123, '2016-06-11', 'Super Coaster', 0),
-(7, 'dfdf', 'o', '2016-06-18', '123', '123', '123', 123, 123, '2016-06-18', 'Octopussy', 0),
-(8, 'aaa', 'o', '2016-06-25', '123', '123', '123', 123, 123, '2016-06-03', '4', 1),
-(9, 'Happy', 'o', '2016-06-11', '124241', '124214', '234', 234, 234, '2016-06-25', '5', 2);
+(1, 'Sally', 'F', '1995-01-01', '604-213-2121', '123 Happy Dr', '1230', 123, 10, '2011-05-01', 3, 2),
+(2, 'Tom', 'M', '1998-05-20', '778-770-7700', '75 Apple Lane', '4562', 321, 10, '2014-05-01', 4, 1),
+(3, 'Jeff', 'M', '1997-12-12', '778-500-0000', '56 Auto Rd', '7895', 231, 10, '2012-05-01', 2, 3),
+(4, 'Irene', 'F', '1973-03-21', '778-210-4500', '45 Actual St', '1902', 213, 10, '2006-05-01', 1, 2),
+(5, 'DropTable', 'M', '2000-01-01', '604-123-4567', '35 Table Dr', '2222', 312, 10, '2016-05-01', 6, 1),
+(8, 'aaa', 'o', '2016-06-25', '123', '123', '123', 123, 123, '2016-06-03', 4, 1),
+(9, 'Happy', 'o', '2016-06-11', '124241', '124214', '234', 234, 234, '2016-06-25', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -249,7 +247,9 @@ INSERT INTO `visited` (`VisitedDatetime`, `GuestID`, `FacilityID`) VALUES
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
-  ADD PRIMARY KEY (`EmployeeID`);
+  ADD PRIMARY KEY (`EmployeeID`),
+  ADD KEY `WorksAt` (`WorksAt`),
+  ADD KEY `ReportsTo` (`ReportsTo`);
 
 --
 -- Indexes for table `game`
@@ -318,6 +318,17 @@ ALTER TABLE `manager`
 --
 ALTER TABLE `ride`
   MODIFY `FacilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `employee`
+--
+ALTER TABLE `employee`
+  ADD CONSTRAINT `ReportsToConstraint` FOREIGN KEY (`ReportsTo`) REFERENCES `manager` (`ManagerID`) ON DELETE SET NULL,
+  ADD CONSTRAINT `WorksAtConstraint` FOREIGN KEY (`WorksAt`) REFERENCES `ride` (`FacilityID`) ON DELETE SET NULL;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
