@@ -1,14 +1,54 @@
 <?php
-session_start();
-?>
+    session_start();
+
+    // Connect to database
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
+
+    if($_SESSION['loggedInUser']){
+        $usertype = $_SESSION['loggedInUser'][0];
+        $name = $_SESSION['loggedInUser'][1];
+        $password = $_SESSION['loggedInUser'][2];
+
+        // Compose Query: Check if the name exists
+        $query = sprintf("SELECT * FROM %s WHERE name ='%s'", $usertype, $name);
+
+        // Perform Query
+        $result = mysql_query($query);
+
+        // Check result
+        // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+        if (!$result) {
+            $message  = 'Invalid query: ' . mysql_error() . "\n";
+            $message .= 'Whole query: ' . $query;
+            die($message);
+        }
+
+        // Check the number of rows
+        $numRows = mysql_num_rows($result);
+        if($numRows == 0){
+            $_SESSION['error'] = "<p id='p-label'>User does not exists. Re-attempt login. <a id='p-label' href='loginFront.php'>&larr; Back</a></p>";
+            header("Location: loginError.php");
+            exit;
+        }
+        
+        $row = mysql_fetch_assoc($result);
+         
+    }
+    else{
+        $_SESSION['error'] = "<p id='p-label'>Failed to retrieve fields. Re-attempt login. <a id='p-label' href='login.html'>&larr; Back</a></p>";
+        header("Location: loginError.php");
+    }
+?>      
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="../styles/custom.css" rel="stylesheet" />
     <link href="../styles/bootstrap.min.css" rel="stylesheet" />
-    <title>Manager Account</title>
+    <title>Edit Employee Details</title>
 </head>
-<body style="background-image:url('../images/AmusementPark-2.jpg'); background-size:100%; background-repeat:repeat-y">
+<body style="background-image:url('../images/AmusementPark-1.jpg'); height:100%">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -21,12 +61,8 @@ session_start();
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.php">Home</a>
-                    </li>
-                    <li class="active">
-                        <a href="manager-account.php">Manager</a>
-                    </li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="employee-account.php">Employee</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -38,43 +74,42 @@ session_start();
             </div>
         </div>
     </nav>
-
+    
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h1 id="header-1">Manager Account</h1>
+            <h1 id="header-1">Edit Employee Details</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3" style="text-align:center">
-            <form role="form" id="form-background" method="post">
-                <?php
-                echo "<p id='p-label'>Login Successful!</p>";
-                echo "<p id='p-label'>Successfully logged in as ".$_SESSION['loggedInUser'][0]." ".$_SESSION['loggedInUser'][1].".</p>";
-                echo "<br>
-                            <div class='btn-group-vertical'>
-                                <a class='btn btn-primary' href='manager-edit.php'>Edit account details</a>
-                                <br>
-                                <a class='btn btn-info' href='manager-add-employee-front.php'>Add employee</a>
-                                <br>
-                                <a class='btn btn-info' href='manager-remove-employee-front.php'>Remove employee</a>
-                                <br>
-                                <a class='btn btn-success' href='manager-add-ride-front.php'>Add ride</a>
-                                <br>
-                                <a class='btn btn-success' href='manager-remove-ride-front.php'>Remove ride</a>
-                                <br>
-                                <a class='btn btn-default' href='manager-project-select-front.php'>Project and select query</a>
-                                <br>
-                                <a class='btn btn-default' href='manager-join-front.php'>Join query</a>
-                                <br>
-                                <a class='btn btn-default' href='manager-division-front.php'>Division query</a>
-                                <br>
-                                <a class='btn btn-default' href='manager-aggregation-front.php'>Aggregation query</a>
-                                <br>
-                                <a class='btn btn-default' href='manager-aggregation-nested-front.php'>Nested aggregation with group-by query</a>
-                                <br>
-                                <a class='btn btn-danger' href='manager-delete.php'>Delete account</a>
-                            </div>";
-                ?>
+        <div class="col-md-6 col-md-offset-3">
+            <form role="form" action="employee-update.php" id="form-background" method="post">
+                <div class="radio" id="gender-radio">
+                    <p id="p-label">Gender:</p>
+                    <label><input type="radio" name="gender" value="F" required <?php if ($row['gender'] == 'F'){ echo 'checked'; } ?> />Female</label><br />
+                    <label><input type="radio" name="gender" value="M"  <?php if ($row['gender'] == 'M'){ echo 'checked'; } ?>/>Male</label>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Birth Date:</label>
+                    <input name="birthDate" type="date" class="form-control" id="birthDate" placeholder="mm/dd/yyyy" value="<?php echo $row['birthDate']; ?>" required />
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input name="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="111-222-3333" value="<?php echo $row['phoneNumber']; ?>" required />
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input name="address" type="text" class="form-control" id="address" placeholder="123 Main Street" value="<?php echo $row['address']; ?>" required />
+                </div>
+                <div class="form-group">
+                    <label for="pwd">New Password:</label>
+                    <input name="password" type="password" class="form-control" id="pwd" placeholder="New Password" value="<?php echo $row['loginPwd']; ?>"/>
+                </div>
+                <div class="form-group">
+                    <label for="pwd-retype">Retype Password:</label>
+                    <input name="password-retype" type="password" class="form-control" id="pwd-retype" placeholder="Retype New Password"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="employee-account.php" class="btn btn-default">Cancel</a>
             </form>
         </div>
     </div>
