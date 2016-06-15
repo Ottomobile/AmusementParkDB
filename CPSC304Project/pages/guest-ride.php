@@ -96,6 +96,7 @@
                     </div>
                 </div>
                 <button class="btn btn-primary">Submit</button>
+                <a class="btn btn-default" href="guest-account.php">Cancel</a>
             </form>
         </div>
     </div>

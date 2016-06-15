@@ -46,8 +46,57 @@
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form role="form" id="form-background">
-                <p>PRINT OUT GAME DETAILS</p>
+            <form role="form" id="form-background" action="guest-game-back.php" method="post">
+                <div class="form-group">
+                    <p id="p-label">Current balance: </p>
+                    <?php
+                    $name = $_SESSION['loggedInUser'][1];
+
+                    // Get account balance
+                    $query = sprintf("SELECT accountBalance FROM guest WHERE name = '%s';", $name);
+
+                    // Perform query
+                    $result = mysql_query($query);
+
+                    // Check result
+                    // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                    if (!$result) {
+                        $message  = 'Invalid query: ' . mysql_error() . "\n";
+                        $message .= 'Whole query: ' . $query;
+                        die($message);
+                    }
+                    $row = mysql_fetch_assoc($result);
+                    echo "<p id=p-label>$".$row['accountBalance']."</p>";
+                    ?>
+                    <br />
+                    <p id="p-label">Games to play:</p>
+                    <div class="dropdown">
+                        <select class="form-control" name="GameID">
+                            <?php
+                            // Prepare select statement
+                            $query = "SELECT GameID, GameName, Cost FROM game;";
+
+                            // Perform query
+                            $result = mysql_query($query);
+
+                            // Check result
+                            // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                            if (!$result) {
+                                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                                $message .= 'Whole query: ' . $query;
+                                die($message);
+                            }
+                            while($row = mysql_fetch_assoc($result)){
+                                $htmlToPrint = sprintf("<option value='%s'>%s, $%s</option>", $row['GameID'], $row['GameName'], $row['Cost']);
+                                echo $htmlToPrint;
+                            }
+                            ?>
+                        </select>
+                        <br />
+                        <button class="btn btn-primary">Submit</button>
+                        <a class="btn btn-default" href="guest-account.php">Cancel</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
