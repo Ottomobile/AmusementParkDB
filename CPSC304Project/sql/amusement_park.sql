@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2016 at 12:18 PM
+-- Generation Time: Jun 15, 2016 at 07:45 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -102,12 +102,12 @@ CREATE TABLE `guest` (
 --
 
 INSERT INTO `guest` (`GuestID`, `name`, `gender`, `birthDate`, `phoneNumber`, `address`, `emailAddress`, `loginPwd`, `accountBalance`) VALUES
-(1, 'Bob', 'M', '2005-01-13', '111-222-3333', '123 Main Street NW', 'Bob@hotmail.com', '123', 1240),
+(1, 'Bob', 'M', '2005-01-13', '111-222-3333', '123 Main Street NW', 'Bob@hotmail.com', '123', 1160),
 (2, 'Jen', 'F', '2000-12-12', '604-123-1234', '123 Cambie Street', 'Jen@hotmail.com', 'JenPassword', 3),
 (3, 'Joe', 'M', '0000-00-00', '123-321-4321', '123 Happy Avenue', '', 'JoePassword', 12312321),
 (4, 'Yup', 'F', '2016-06-16', '123-123-6543', '123 Granville Island', 'Yup@yahoo.ca', '12345', 123456),
 (5, 'Apple', 'F', '2016-06-09', '000-999-9999', '123 Rainbow Road', 'Apple@mango.com', '111ee', 10101),
-(6, 'Gil', 'F', '2016-06-28', '123-909-2323', '123 Happy Ave', 'Gil.More@ubc.ca', '456', 1010);
+(6, 'Gil', 'F', '2016-06-28', '123-909-2323', '123 Happy Ave', 'Gil.More@ubc.ca', '456', 1000);
 
 -- --------------------------------------------------------
 
@@ -243,7 +243,8 @@ INSERT INTO `visited` (`VisitedDatetime`, `GuestID`, `FacilityID`) VALUES
 ('2016-05-25 17:27:46', 1, 2),
 ('2016-05-25 17:27:47', 1, 3),
 ('2016-05-25 17:27:48', 1, 4),
-('2016-05-25 17:27:49', 1, 5);
+('2016-05-25 17:27:49', 1, 5),
+('2016-06-15 10:44:34', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -315,17 +316,17 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `GuestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `GuestID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `ride`
 --
 ALTER TABLE `ride`
-  MODIFY `FacilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `FacilityID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --

@@ -124,7 +124,7 @@ mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to th
 
                         // Update visited table to reflect that guest visited ride
                         $query = sprintf("INSERT INTO `visited`(`GuestID`, `FacilityID`, `VisitedDatetime`)
-                                         VALUES ('%s','%s','%s')", $guestID, $facilityID, date("Y-m-d h:i:s"));
+                                         VALUES (%s, %s,'%s')", $guestID,  $_POST['facilityID'], date("Y-m-d h:i:s"));
 
                         // Perform query
                         $result = mysql_query($query);
