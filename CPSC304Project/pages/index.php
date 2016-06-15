@@ -34,7 +34,7 @@
                             echo "<li><a href='employee-account.php'>Employee</a></li>";
                         }
                         elseif($usertype == "manager"){
-                            echo "<li><a href='manager-account.php'>Employee</a></li>";
+                            echo "<li><a href='manager-account.php'>Manager</a></li>";
                         }
                     ?>
                 </ul>

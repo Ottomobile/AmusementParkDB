@@ -38,6 +38,11 @@
                 header("Location: guest-account.php");
                 exit;
             }
+            elseif($usertype == "manager" && $row['Name'] == $name && $row['Loginpwd'] == $password){
+                $_SESSION['loggedInUser'] = array($usertype, $name, $password);
+                header("Location: manager-account.php");
+                exit;
+            }
             else{
                 $_SESSION['error'] = "<p id='p-label'>Incorrect credentials. Re-attempt login. <a id='p-label' href='loginFront.php'>&larr; Back</a></p>";
                 header("Location: loginError.php");
