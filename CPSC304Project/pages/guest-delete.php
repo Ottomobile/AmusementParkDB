@@ -49,9 +49,6 @@
                     <li>
                         <a href="index.php">Home</a>
                     </li>
-                    <li>
-                        <a href="guest-account.php">Guest</a>
-                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
