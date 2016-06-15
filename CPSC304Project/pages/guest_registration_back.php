@@ -63,7 +63,7 @@
                     // Check the number of rows
                     $numRows = mysql_num_rows($result);
                     if($numRows != 0){
-                        die("<p id='p-label'>Please type in a unique name. <a id='p-label' href='guest_registration.html'>&larr; Back</a></p>");
+                        die("<p id='p-label'>Please type in a unique name. <a id='p-label' href='guest_registration_front.php'>&larr; Back</a></p>");
                     }
 
                    // Store the form values in variables
@@ -76,19 +76,18 @@
                    $password = $_POST['password'];
                    $passwordRetype = $_POST['password-retype'];
                    $accountBalance = $_POST['accountBalance'];
-                   $firstVisit = $_POST['firstVisit'];
 
                    // Check if the passwords match
                    if($password != $passwordRetype)
-                        die("<p id='p-label'>Passwords do not match.  Please re-enter form fields. <a id='p-label' href='guest_registration.html'>&larr; Back</a></p>");
+                        die("<p id='p-label'>Passwords do not match.  Please re-enter form fields. <a id='p-label' href='guest_registration_front.php'>&larr; Back</a></p>");
 
                    if($name && $gender && $birthdate && $phoneNumber && $address &&
-                      $emailAddress && $password && $accountBalance && $firstVisit){
+                      $emailAddress && $password && $accountBalance){
 
                         // Prepare insert statement
                         $query = sprintf("INSERT INTO `guest`(`name`, `gender`, `birthDate`, `phoneNumber`, 
-                                        `address`, `emailAddress`, `loginPwd`, `accountBalance`, `firstVisit`)
-                                         VALUES ('%s','%s','%s','%s', '%s','%s','%s', %d, '%s');",
+                                        `address`, `emailAddress`, `loginPwd`, `accountBalance`)
+                                         VALUES ('%s','%s','%s','%s', '%s','%s','%s', %d);",
                                          mysql_real_escape_string($name),
                                          mysql_real_escape_string($gender),
                                          mysql_real_escape_string($birthdate),
@@ -96,8 +95,7 @@
                                          mysql_real_escape_string($address),
                                          mysql_real_escape_string($emailAddress),
                                          mysql_real_escape_string($password),
-                                         mysql_real_escape_string($accountBalance),
-                                         mysql_real_escape_string($firstVisit));
+                                         mysql_real_escape_string($accountBalance));
 
                         // Perform query
                         $result = mysql_query($query);

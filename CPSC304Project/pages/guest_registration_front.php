@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="../styles/custom.css" rel="stylesheet" />
@@ -73,15 +73,6 @@
             <div class="form-group">
                 <label for="accountBalance">Initial Account Balance ($):</label>
                 <input name="accountBalance" type="number" min="0" class="form-control" id="pwd-retype" placeholder="1000" required/>
-            </div>
-            <div class="form-group">
-                <label for="sel1">First Visit:</label>
-                <select class="form-control" name="firstVisit" id="sel1" required>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
