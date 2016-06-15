@@ -52,7 +52,7 @@
                     <div class="dropdown">
                         <select class="form-control" name="workat">
                             <?php
-                            // Prepare delete statement
+                            // Get list of all rides
                             $query = "SELECT FacilityID, Name FROM ride";
 
                             // Perform query

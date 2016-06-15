@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -44,7 +46,34 @@
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form role="form" action="manager-remove-employee-back.php" id="form-background">
+            <form role="form" action="manager-remove-employee-back.php" id="form-background" method="post">
+                <div class="form-group">
+                    <p id="p-label">Remove Employee:</p>
+                    <div class="dropdown">
+                        <select class="form-control" name="employeeToRemove">
+                            <?php
+                            // Get list of all employees
+                            $query = "SELECT EmployeeID, Name FROM employee";
+
+                            // Perform query
+                            $result = mysql_query($query);
+
+                            // Check result
+                            // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+                            if (!$result) {
+                                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                                $message .= 'Whole query: ' . $query;
+                                die($message);
+                            }
+                            while($row = mysql_fetch_assoc($result)){
+                                $htmlToPrint = sprintf("<option value='%s'>%s</option>", $row['EmployeeID'], $row['Name']);
+                                echo $htmlToPrint;
+                            }
+                            ?>
+                        </select>
+                        <br />
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-default" href="manager-account.php">Cancel</a>
             </form>
