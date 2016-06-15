@@ -38,7 +38,7 @@
                 header("Location: guest-account.php");
                 exit;
             }
-            elseif($usertype == "employee" && $row['Name'] == $name && $row['Loginpwd'] == $password){
+            elseif($usertype == "employee" && $row['Name'] == $name && $row['LoginPwd'] == $password){
                 $_SESSION['loggedInUser'] = array($usertype, $name, $password);
                 header("Location: employee-account.php");
                 exit;
