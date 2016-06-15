@@ -1,28 +1,28 @@
 <?php
-//session_start();
+    session_start();
 
-//$connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
-//mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
+    $connection = mysql_connect("localhost", "root", "") or die("<p>Couldn't connect to the database!</p>");
+    mysql_select_db("amusement_park", $connection) or die("<p>Couldn't connect to the database!</p>");
 
-//// Get name of manager account to delete
-//$name = $_SESSION['loggedInUser'][1];
+    // Get name of manager account to delete
+    $name = $_SESSION['loggedInUser'][1];
 
-//// Prepare delete statement
-//$query = sprintf("DELETE FROM manager WHERE name ='%s';", $name);
+    // Prepare delete statement
+    $query = sprintf("DELETE FROM manager WHERE name ='%s';", $name);
 
-//// Perform query
-//$result = mysql_query($query);
+    // Perform query
+    $result = mysql_query($query);
 
-//// Check result
-//// This shows the actual query sent to MySQL, and the error. Useful for debugging.
-//if (!$result) {
-//    $message  = 'Invalid query: ' . mysql_error() . "\n";
-//    $message .= 'Whole query: ' . $query;
-//    die($message);
-//}
+    // Check result
+    // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+    if (!$result) {
+        $message  = 'Invalid query: ' . mysql_error() . "\n";
+        $message .= 'Whole query: ' . $query;
+        die($message);
+    }
 
-//// Successfully deleted account
-//session_destroy();
+    // Successfully deleted account
+    session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -69,10 +69,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h1 id="header-1">
-                Manager account
-                <q>
-                    <?php echo $name;?>
-                </q>deleted
+                Manager account <?php echo $name;?> deleted
             </h1>
             <br />
         </div>
